@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="FoodItem.cs" />
     <Compile Include="Input.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TravellingSnake.cs">
       <SubType>Form</SubType>
     </Compile>

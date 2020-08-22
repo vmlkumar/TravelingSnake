@@ -14,6 +14,7 @@ namespace TravelingSnake
         public static int Score { get; set; }
         public static bool IsGameOver { get; set; }
         public static int Points { get; set; }
+        public static Direction direction { get; set; }
 
         public Settings()
         {
@@ -22,6 +23,7 @@ namespace TravelingSnake
             SnakeSpeed = 16;
             Score = 0;
             IsGameOver = false;
+            direction = Direction.Down;
         }
     }
 

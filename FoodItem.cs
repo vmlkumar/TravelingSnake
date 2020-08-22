@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TravelingSnake
 {
-    class FoodItem
+    class Item
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public FoodItem()
+        public Item()
         {
             X = 0;
-               Y = 0;
+            Y = 0;
         }
     }
 }

@@ -88,6 +88,8 @@
             this.Controls.Add(this.gameWorld);
             this.Name = "frmMain";
             this.Text = "Travelling Snake Game";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.gameWorld)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

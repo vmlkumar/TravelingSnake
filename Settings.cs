@@ -8,6 +8,7 @@ namespace TravelingSnake
 {
     class Settings
     {
+        // properties defined to access these variable globaly 
         public static int PanelHeight { get; set; }
         public static int PanelWidth { get; set; }
         public static int SnakeSpeed { get; set; }

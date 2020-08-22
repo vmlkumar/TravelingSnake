@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelingSnake
 {
+    // Item class is used to create the food item and body of the snake it acually a circle
     class Item
     {
         public int X { get; set; }

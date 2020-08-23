@@ -59,7 +59,7 @@ namespace TravelingSnake
                 {
                     min = 0;
                     hours++;
-                }
+                }    
                 if (sec <= 9)
                     txtSeconds.Text = "0" + sec;
                 else
@@ -68,15 +68,17 @@ namespace TravelingSnake
                     txtMinutes.Text = "0" + min;
                 else
                     txtMinutes.Text = "" + min;
-
-                
+                if (hours <= 9)
+                    txtMinutes.Text = "0" + hours;
+                else
+                    txtMinutes.Text = "" + hours;
             }
             if(Settings.IsGameOver == true)
             {
                 playingTimeTimer.Stop();
                 sec = 0;
                 min = 0;
-                
+                hours = 0;
             }
             
             //Console.WriteLine("reached here ");
@@ -169,11 +171,11 @@ namespace TravelingSnake
                 {
                     if (i == 0)
                     {
-                        sankeColor = Brushes.Black;
+                        sankeColor = Brushes.Brown;
                     }
                     else
                     {
-                        sankeColor = Brushes.Green;
+                        sankeColor = Brushes.RosyBrown;
                     }
 
                     // snake location coordinates with head and body
@@ -182,10 +184,13 @@ namespace TravelingSnake
                                       Snake[i].Y * Settings.ItemHeight,
                                       Settings.ItemWidth, Settings.ItemHeight));
 
-                    // draw food
-                    canvas.FillEllipse(Brushes.Red,
+                    //draw food
+                    canvas.FillEllipse(Brushes.Green,
                        new Rectangle(food.X * Settings.ItemWidth,
                                      food.Y * Settings.ItemHeight, Settings.ItemWidth, Settings.ItemHeight));
+                    Console.WriteLine("value of food.x = " + food.X + " abd food.Y = " + food.Y);
+                    Console.WriteLine("value of Item w and H = " + Settings.ItemWidth + " abd food.Y = "+Settings.ItemHeight);
+                    Console.WriteLine("value of multiplication food.x = " + food.X * Settings.ItemWidth + " abd food.Y = " + food.Y * Settings.ItemHeight);
                 }
             }
             else
@@ -291,6 +296,13 @@ namespace TravelingSnake
         private void Die()
         {
             Settings.IsGameOver = true;
+        }
+
+
+        // To Test Coordinated
+        private void gameWorld_MouseClick(object sender, MouseEventArgs e)
+        {
+            lblXYCoordinateInfo.Text = "X: " + e.X + " / Y: " + e.Y;
         }
     }
 }

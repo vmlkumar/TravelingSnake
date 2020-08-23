@@ -42,6 +42,7 @@ namespace TravelingSnake
             this.txtSeconds = new System.Windows.Forms.TextBox();
             this.txtHours = new System.Windows.Forms.TextBox();
             this.lblNmeCombinedTime = new System.Windows.Forms.Label();
+            this.lblXYCoordinateInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gameWorld)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +55,7 @@ namespace TravelingSnake
             this.gameWorld.TabIndex = 0;
             this.gameWorld.TabStop = false;
             this.gameWorld.Paint += new System.Windows.Forms.PaintEventHandler(this.gameWorld_Paint);
+            this.gameWorld.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gameWorld_MouseClick);
             // 
             // lblNameScore
             // 
@@ -150,12 +152,21 @@ namespace TravelingSnake
             this.lblNmeCombinedTime.TabIndex = 8;
             this.lblNmeCombinedTime.Text = "Hr    :   Min   :  Sec";
             // 
+            // lblXYCoordinateInfo
+            // 
+            this.lblXYCoordinateInfo.AutoSize = true;
+            this.lblXYCoordinateInfo.Location = new System.Drawing.Point(305, 24);
+            this.lblXYCoordinateInfo.Name = "lblXYCoordinateInfo";
+            this.lblXYCoordinateInfo.Size = new System.Drawing.Size(0, 13);
+            this.lblXYCoordinateInfo.TabIndex = 9;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(605, 507);
+            this.Controls.Add(this.lblXYCoordinateInfo);
             this.Controls.Add(this.lblNmeCombinedTime);
             this.Controls.Add(this.txtHours);
             this.Controls.Add(this.txtSeconds);
@@ -189,6 +200,7 @@ namespace TravelingSnake
         private System.Windows.Forms.TextBox txtSeconds;
         private System.Windows.Forms.TextBox txtHours;
         private System.Windows.Forms.Label lblNmeCombinedTime;
+        private System.Windows.Forms.Label lblXYCoordinateInfo;
     }
 }
 

@@ -31,6 +31,7 @@ namespace TravelingSnake
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.gameWorld = new System.Windows.Forms.PictureBox();
             this.lblNameScore = new System.Windows.Forms.Label();
             this.lblScoreValue = new System.Windows.Forms.Label();
@@ -43,12 +44,14 @@ namespace TravelingSnake
             this.txtHours = new System.Windows.Forms.TextBox();
             this.lblNmeCombinedTime = new System.Windows.Forms.Label();
             this.lblXYCoordinateInfo = new System.Windows.Forms.Label();
+            this.tavellingSnakeIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gameWorld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tavellingSnakeIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // gameWorld
             // 
-            this.gameWorld.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.gameWorld.BackColor = System.Drawing.SystemColors.Desktop;
             this.gameWorld.Location = new System.Drawing.Point(12, 60);
             this.gameWorld.Name = "gameWorld";
             this.gameWorld.Size = new System.Drawing.Size(581, 435);
@@ -61,8 +64,8 @@ namespace TravelingSnake
             // 
             this.lblNameScore.AutoSize = true;
             this.lblNameScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameScore.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblNameScore.Location = new System.Drawing.Point(446, 13);
+            this.lblNameScore.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblNameScore.Location = new System.Drawing.Point(279, 13);
             this.lblNameScore.Name = "lblNameScore";
             this.lblNameScore.Size = new System.Drawing.Size(87, 25);
             this.lblNameScore.TabIndex = 1;
@@ -73,7 +76,7 @@ namespace TravelingSnake
             this.lblScoreValue.AutoSize = true;
             this.lblScoreValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScoreValue.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblScoreValue.Location = new System.Drawing.Point(541, 13);
+            this.lblScoreValue.Location = new System.Drawing.Point(369, 13);
             this.lblScoreValue.Name = "lblScoreValue";
             this.lblScoreValue.Size = new System.Drawing.Size(0, 25);
             this.lblScoreValue.TabIndex = 2;
@@ -94,7 +97,7 @@ namespace TravelingSnake
             // 
             this.lblTimePassed.AutoSize = true;
             this.lblTimePassed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimePassed.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblTimePassed.ForeColor = System.Drawing.Color.SeaGreen;
             this.lblTimePassed.Location = new System.Drawing.Point(13, 15);
             this.lblTimePassed.Name = "lblTimePassed";
             this.lblTimePassed.Size = new System.Drawing.Size(162, 25);
@@ -160,12 +163,23 @@ namespace TravelingSnake
             this.lblXYCoordinateInfo.Size = new System.Drawing.Size(0, 13);
             this.lblXYCoordinateInfo.TabIndex = 9;
             // 
+            // tavellingSnakeIcon
+            // 
+            this.tavellingSnakeIcon.ErrorImage = ((System.Drawing.Image)(resources.GetObject("tavellingSnakeIcon.ErrorImage")));
+            this.tavellingSnakeIcon.Image = ((System.Drawing.Image)(resources.GetObject("tavellingSnakeIcon.Image")));
+            this.tavellingSnakeIcon.Location = new System.Drawing.Point(422, 4);
+            this.tavellingSnakeIcon.Name = "tavellingSnakeIcon";
+            this.tavellingSnakeIcon.Size = new System.Drawing.Size(170, 50);
+            this.tavellingSnakeIcon.TabIndex = 10;
+            this.tavellingSnakeIcon.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(605, 507);
+            this.Controls.Add(this.tavellingSnakeIcon);
             this.Controls.Add(this.lblXYCoordinateInfo);
             this.Controls.Add(this.lblNmeCombinedTime);
             this.Controls.Add(this.txtHours);
@@ -182,6 +196,7 @@ namespace TravelingSnake
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.gameWorld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tavellingSnakeIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +216,7 @@ namespace TravelingSnake
         private System.Windows.Forms.TextBox txtHours;
         private System.Windows.Forms.Label lblNmeCombinedTime;
         private System.Windows.Forms.Label lblXYCoordinateInfo;
+        private System.Windows.Forms.PictureBox tavellingSnakeIcon;
     }
 }
 

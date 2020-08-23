@@ -9,8 +9,8 @@ namespace TravelingSnake
     class Settings
     {
         // properties defined to access these variable globaly 
-        public static int PanelHeight { get; set; }
-        public static int PanelWidth { get; set; }
+        public static int ItemHeight { get; set; }
+        public static int ItemWidth { get; set; }
         public static int SnakeSpeed { get; set; }
         public static int Score { get; set; }
         public static bool IsGameOver { get; set; }
@@ -19,10 +19,11 @@ namespace TravelingSnake
 
         public Settings()
         {
-            PanelHeight = 16;
-            PanelWidth = 16;
-            SnakeSpeed = 16;
+            ItemHeight = 16;
+            ItemWidth = 16;
+            SnakeSpeed = 10;
             Score = 0;
+            Points = 10;
             IsGameOver = false;
             direction = Direction.Down;
         }

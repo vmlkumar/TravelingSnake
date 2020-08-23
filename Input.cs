@@ -11,6 +11,7 @@ namespace TravelingSnake
     class Input
     {
         //List of Keyboard Buttons available or pressed by the users will be stored in this
+        //private static Dictionary<Keys, bool> keyTable = new Dictionary<Keys, bool>();
         private static Hashtable keyTable = new Hashtable();
 
         //Event Handling to check if a paticular button is pressed
@@ -23,7 +24,7 @@ namespace TravelingSnake
 
             // return the ture or false if not 
             return (bool) keyTable[key];
-
+           
             //return true;
         }
 

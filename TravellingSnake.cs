@@ -188,9 +188,10 @@ namespace TravelingSnake
                     canvas.FillEllipse(Brushes.Green,
                        new Rectangle(food.X * Settings.ItemWidth,
                                      food.Y * Settings.ItemHeight, Settings.ItemWidth, Settings.ItemHeight));
-                    Console.WriteLine("value of food.x = " + food.X + " abd food.Y = " + food.Y);
-                    Console.WriteLine("value of Item w and H = " + Settings.ItemWidth + " abd food.Y = "+Settings.ItemHeight);
-                    Console.WriteLine("value of multiplication food.x = " + food.X * Settings.ItemWidth + " abd food.Y = " + food.Y * Settings.ItemHeight);
+
+                    //Console.WriteLine("value of food.x = " + food.X + " abd food.Y = " + food.Y);
+                    //Console.WriteLine("value of Item w and H = " + Settings.ItemWidth + " abd food.Y = "+Settings.ItemHeight);
+                    //Console.WriteLine("value of multiplication food.x = " + food.X * Settings.ItemWidth + " abd food.Y = " + food.Y * Settings.ItemHeight);
                 }
             }
             else
@@ -288,7 +289,9 @@ namespace TravelingSnake
             //Update Score
             Settings.Score += Settings.Points;
             lblScoreValue.Text = Settings.Score.ToString();
-
+            
+            //Settings.SnakeSpeed++;
+            //Console.WriteLine("speed check : " + Settings.SnakeSpeed);
             AddFood();
         }
 

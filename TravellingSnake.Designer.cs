@@ -64,7 +64,7 @@ namespace TravelingSnake
             // 
             this.lblNameScore.AutoSize = true;
             this.lblNameScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameScore.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblNameScore.ForeColor = System.Drawing.Color.DarkGreen;
             this.lblNameScore.Location = new System.Drawing.Point(279, 13);
             this.lblNameScore.Name = "lblNameScore";
             this.lblNameScore.Size = new System.Drawing.Size(87, 25);
@@ -97,7 +97,7 @@ namespace TravelingSnake
             // 
             this.lblTimePassed.AutoSize = true;
             this.lblTimePassed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimePassed.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblTimePassed.ForeColor = System.Drawing.Color.DarkGreen;
             this.lblTimePassed.Location = new System.Drawing.Point(13, 15);
             this.lblTimePassed.Name = "lblTimePassed";
             this.lblTimePassed.Size = new System.Drawing.Size(162, 25);

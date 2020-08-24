@@ -194,7 +194,7 @@ namespace TravelingSnake
                     }
                     else
                     {
-                        snakeBodyColor = Brushes.LightSkyBlue;
+                        snakeBodyColor = Brushes.RosyBrown;
                         // snake location coordinates with head and body
                         canvas.FillEllipse(snakeBodyColor,
                             new Rectangle(Snake[i].X * Settings.ItemWidth,
@@ -205,7 +205,7 @@ namespace TravelingSnake
                    
 
                     //draw food
-                    canvas.DrawEllipse(new Pen(Color.Red, 4),
+                    canvas.DrawEllipse(new Pen(Color.Orange, 3),
                        new Rectangle(food.X * Settings.ItemWidth,
                                      food.Y * Settings.ItemHeight, Settings.ItemWidth, Settings.ItemHeight));
 
@@ -247,11 +247,36 @@ namespace TravelingSnake
                     int maxXPossition = gameWorld.Size.Width / Settings.ItemWidth;
                     int maxYPossition = gameWorld.Size.Height / Settings.ItemHeight;
 
-                    //Detect collission with game borders.
+                    /*Detect collission with game borders.
                     if (Snake[i].X < 0 || Snake[i].Y < 0
                         || Snake[i].X >= maxXPossition || Snake[i].Y >= maxYPossition)
                     {
                         GameOver();
+                    }*/
+
+                    //Detect borders and chnage the coordinates to allow crross border on right move.
+                    if (Snake[i].X > maxXPossition)
+                    {
+                        Snake[i].X = 0;
+                        //GameOver();
+                    }
+                    //Detect borders and chnage the coordinates to allow crross border on left move.
+                    if (Snake[i].X < 0)
+                    {
+                        Snake[i].X = maxXPossition;
+                        //GameOver();
+                    }
+                    //Detect borders and chnage the coordinates to allow crross border on down move.
+                    if (Snake[i].Y > maxYPossition)
+                    {
+                        Snake[i].Y = 0;
+                        //GameOver();
+                    }
+                    //Detect borders and chnage the coordinates to allow crross border on up move.
+                    if (Snake[i].Y < 0)
+                    {
+                        Snake[i].Y = maxYPossition;
+                        //GameOver();
                     }
 
 
@@ -300,8 +325,8 @@ namespace TravelingSnake
         {
             bodyPart = new Item();
             //Add item as a circle to increase snake body
-            //bodyPart.X = Snake[Snake.Count - 1].X;
-            //bodyPart.Y = Snake[Snake.Count - 1].Y;
+            bodyPart.X = Snake[Snake.Count - 1].X;
+            bodyPart.Y = Snake[Snake.Count - 1].Y;
             //Console.WriteLine("new part x and y is " + bodyPart.X + "  / " + bodyPart.Y);
             Snake.Add(bodyPart);
 

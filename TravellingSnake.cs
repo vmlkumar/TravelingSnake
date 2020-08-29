@@ -22,18 +22,19 @@ namespace TravelingSnake
     {
         // used to store body of the snake based on no of food items eating
         private List<Item> Snake = new List<Item>();
-        private Item food;
-        private Item bodyPart;
-
+        private Image imageFrog;
+        private Rectangle rect;
+        private Item food, bodyPart;
         // variable use for displaying how much time passed while playing game
-        private int sec = 0;
-        private int min = 0;
-        private int hours = 0;
+        private int sec = 0, min = 0, hours = 0;
 
         public frmMain()
         {
             InitializeComponent();
             lblScoreValue.Visible = true;
+            imageFrog = Properties.Resources.foodImage;
+            rect = new Rectangle(16, 16, 90, 90);
+
 
             //making the default settings
             new Settings();
@@ -55,7 +56,6 @@ namespace TravelingSnake
             StartGame();
 
         }
-
         //Method to dispay time 
         private void TimePlayed(object sender, EventArgs e)
         {
@@ -97,7 +97,6 @@ namespace TravelingSnake
             //Console.WriteLine("reached here ");
             //MessageBox.Show("Reached here");
         }
-
         // Game will be started by this method
         private void StartGame()
         {
@@ -114,26 +113,25 @@ namespace TravelingSnake
             lblScoreValue.Text = Settings.Score.ToString();
             AddFood();
         }
-
         //Add food to the playing world randomly
         private void AddFood()
         {
-            int maxXPossition = gameWorld.Size.Height / Settings.ItemHeight;
-            int maxYPossition = gameWorld.Size.Width / Settings.ItemWidth;
-
+            int maxXPossition = (gameWorld.Size.Width / Settings.ItemWidth);
+            int maxYPossition = (gameWorld.Size.Height / Settings.ItemHeight);
+           
             //int maxXPossition = gameWorld.Size.Height;
             //int maxYPossition = gameWorld.Size.Width;
 
             Random random = new Random();
             food = new Item();
             food.X = random.Next(0, maxXPossition);
-            food.Y = random.Next(0, maxXPossition);
+            food.Y = random.Next(0, maxYPossition);
 
-            Console.WriteLine("GameWorld Coordinates X= " + gameWorld.Size.Height.ToString() + ", Y= " + gameWorld.Size.Width.ToString() + "");
+            //Code used for debugging
+            //Console.WriteLine("GameWorld Coordinates X= " + gameWorld.Size.Height.ToString() + ", Y= " + gameWorld.Size.Width.ToString() + "");
             Console.WriteLine("Max Possitions Coordinates for X= " + maxXPossition + ", and Y= " + maxYPossition + "");
-            Console.WriteLine("food placed at X= " + food.X.ToString() + ", Y= " + food.Y.ToString() + "");
+            //Console.WriteLine("food placed at X= " + food.X.ToString() + ", Y= " + food.Y.ToString() + "");
         }
-
         // It will update the pb (GameWorld) every time interval set in timer and detect for the key pressed and snake movements
         private void RefreshScreen(object sender, EventArgs e)
         {
@@ -170,11 +168,12 @@ namespace TravelingSnake
             }
             gameWorld.Invalidate();   //update the picture box used as sanke game World
         }
-
         // will create the snake and food
         private void gameWorld_Paint(object sender, PaintEventArgs e)
         {
             Graphics canvas = e.Graphics;
+            //canvas.DrawImage(imageApple, rect);
+
             if (!Settings.IsGameOver)
             {
                 Pen sankeHeadColor;
@@ -185,8 +184,9 @@ namespace TravelingSnake
                 {
                     if (i == 0)
                     {
+                        // draw snake head
                         sankeHeadColor = new Pen(Color.LightSkyBlue, 2);
-                        // snake location coordinates with head and body
+                        // snake head on location coordinates
                         canvas.DrawEllipse(sankeHeadColor,
                             new Rectangle(Snake[i].X * Settings.ItemWidth,
                                           Snake[i].Y * Settings.ItemHeight,
@@ -202,16 +202,24 @@ namespace TravelingSnake
                                           Settings.ItemWidth, Settings.ItemHeight));
                     }
 
-                   
 
-                    //draw food
+
+                    // draw food
                     canvas.DrawEllipse(new Pen(Color.Orange, 3),
                        new Rectangle(food.X * Settings.ItemWidth,
                                      food.Y * Settings.ItemHeight, Settings.ItemWidth, Settings.ItemHeight));
 
-                    //Console.WriteLine("value of food.x = " + food.X + " abd food.Y = " + food.Y);
+                    /*draw frog food
+                    canvas.DrawImage(imageFrog,
+                        new Rectangle(food.X * Settings.ItemWidth,
+                                      food.Y * Settings.ItemHeight, Settings.ItemWidth, Settings.ItemHeight));*/
+
+
+
+                    // code used for debugging
+                    Console.WriteLine("value of food.x = " + food.X + " abd food.Y = " + food.Y);
                     //Console.WriteLine("value of Item w and H = " + Settings.ItemWidth + " abd food.Y = "+Settings.ItemHeight);
-                    //Console.WriteLine("value of multiplication food.x = " + food.X * Settings.ItemWidth + " abd food.Y = " + food.Y * Settings.ItemHeight);
+                    Console.WriteLine("value of multiplication food.x = " + food.X * Settings.ItemWidth + " abd food.Y = " + food.Y * Settings.ItemHeight);
                 }
             }
             else
@@ -219,10 +227,13 @@ namespace TravelingSnake
                 GameOver();
             }
         }
-
         // method used to move the snake to eat food wtih conditions applied
         private void MoveSnake()
         {
+            //Get maximum X and Y Pos
+            int maxXPossition = gameWorld.Size.Width / Settings.ItemWidth;
+            int maxYPossition = gameWorld.Size.Height / Settings.ItemHeight;
+
             for (int i = Snake.Count - 1; i >= 0; i--)
             {
                 //Move head
@@ -243,9 +254,6 @@ namespace TravelingSnake
                             Snake[i].Y++;
                             break;
                     }
-                    //Get maximum X and Y Pos
-                    int maxXPossition = gameWorld.Size.Width / Settings.ItemWidth;
-                    int maxYPossition = gameWorld.Size.Height / Settings.ItemHeight;
 
                     /*Detect collission with game borders.
                     if (Snake[i].X < 0 || Snake[i].Y < 0
@@ -255,40 +263,35 @@ namespace TravelingSnake
                     }*/
 
                     //Detect borders and chnage the coordinates to allow crross border on right move.
-                    if (Snake[i].X > maxXPossition)
+                    if (Snake[i].X >= maxXPossition)
                     {
                         Snake[i].X = 0;
-                        //GameOver();
                     }
                     //Detect borders and chnage the coordinates to allow crross border on left move.
                     if (Snake[i].X < 0)
                     {
                         Snake[i].X = maxXPossition;
-                        //GameOver();
                     }
                     //Detect borders and chnage the coordinates to allow crross border on down move.
-                    if (Snake[i].Y > maxYPossition)
+                    if (Snake[i].Y >= maxYPossition)
                     {
                         Snake[i].Y = 0;
-                        //GameOver();
                     }
                     //Detect borders and chnage the coordinates to allow crross border on up move.
                     if (Snake[i].Y < 0)
                     {
                         Snake[i].Y = maxYPossition;
-                        //GameOver();
                     }
 
 
-                    //Detect collission with body
+                    /*Detect collission with body
                     for (int j = 1; j < Snake.Count; j++)
                     {
-                        if (Snake[i].X == Snake[j].X &&
-                           Snake[i].Y == Snake[j].Y)
+                        if (Snake[i].X == Snake[j].X && Snake[i].Y == Snake[j].Y)
                         {
                             GameOver();
                         }
-                    }
+                    }*/
 
                     //Detect collision with food piece
                     if (Snake[0].X == food.X && Snake[0].Y == food.Y)
@@ -308,18 +311,6 @@ namespace TravelingSnake
             }
 
         }
-
-        // Detect Key Pressed 
-        private void frmMain_KeyDown(object sender, KeyEventArgs e)
-        {
-            Input.ChangeState(e.KeyCode, true);
-            Console.WriteLine("key pressed: "+ e.KeyCode);  //Debug
-        }
-        private void frmMain_KeyUp(object sender, KeyEventArgs e)
-        {
-            Input.ChangeState(e.KeyCode, false);
-        }
-
         // method for eat opration of the snake
         private void Eat()
         {
@@ -333,12 +324,11 @@ namespace TravelingSnake
             //Update Score
             Settings.Score += Settings.Points;
             lblScoreValue.Text = Settings.Score.ToString();
-            
+
             //Settings.SnakeSpeed++;
             //Console.WriteLine("speed check : " + Settings.SnakeSpeed);
             AddFood();
         }
-
         // Game over call 
         private void GameOver()
         {
@@ -347,9 +337,18 @@ namespace TravelingSnake
             lblGameOver.Text = gameOver;
             lblGameOver.Visible = true;
         }
-
-
-        // To Test Coordinated
+        // Detect Key Pressed 
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            Input.ChangeState(e.KeyCode, true);
+            //Debug Code
+            Console.WriteLine("key pressed: "+ e.KeyCode);  //Debug
+        }
+        private void frmMain_KeyUp(object sender, KeyEventArgs e)
+        {
+            Input.ChangeState(e.KeyCode, false);
+        }
+        // To Test Coordinated Debug code
         private void gameWorld_MouseClick(object sender, MouseEventArgs e)
         {
             lblXYCoordinateInfo.Text = "X: " + e.X + " / Y: " + e.Y;

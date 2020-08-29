@@ -19,8 +19,8 @@ namespace TravelingSnake
 
         public Settings()
         {
-            ItemHeight = 20;
-            ItemWidth = 20;
+            ItemHeight = 25;
+            ItemWidth = 25;
             SnakeSpeed = 10;
             Score = 0;
             Points = 10;

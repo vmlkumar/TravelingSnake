@@ -54,7 +54,7 @@ namespace TravelingSnake
             this.gameWorld.BackColor = System.Drawing.SystemColors.Desktop;
             this.gameWorld.Location = new System.Drawing.Point(12, 60);
             this.gameWorld.Name = "gameWorld";
-            this.gameWorld.Size = new System.Drawing.Size(581, 435);
+            this.gameWorld.Size = new System.Drawing.Size(575, 425);
             this.gameWorld.TabIndex = 0;
             this.gameWorld.TabStop = false;
             this.gameWorld.Paint += new System.Windows.Forms.PaintEventHandler(this.gameWorld_Paint);
@@ -167,9 +167,9 @@ namespace TravelingSnake
             // 
             this.tavellingSnakeIcon.ErrorImage = ((System.Drawing.Image)(resources.GetObject("tavellingSnakeIcon.ErrorImage")));
             this.tavellingSnakeIcon.Image = ((System.Drawing.Image)(resources.GetObject("tavellingSnakeIcon.Image")));
-            this.tavellingSnakeIcon.Location = new System.Drawing.Point(422, 4);
+            this.tavellingSnakeIcon.Location = new System.Drawing.Point(485, 4);
             this.tavellingSnakeIcon.Name = "tavellingSnakeIcon";
-            this.tavellingSnakeIcon.Size = new System.Drawing.Size(170, 50);
+            this.tavellingSnakeIcon.Size = new System.Drawing.Size(99, 50);
             this.tavellingSnakeIcon.TabIndex = 10;
             this.tavellingSnakeIcon.TabStop = false;
             // 

@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TravellingSnake.resx">
       <DependentUpon>TravellingSnake.cs</DependentUpon>
@@ -81,6 +82,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appleImageNewOld.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appleImageNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foodImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foodImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
